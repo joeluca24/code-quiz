@@ -9,11 +9,12 @@ var Index = 0;
 var totalSeconds = 0;
 var secondsElapsed = 0;
 var interval;
+// THEN a timer starts and I am presented with a question
 function runClockCb() {
     secondsElapsed++;
     minutesDisplay.textContent = Math.floor((totalSeconds - secondsElapsed) / 60);
     secondsDisplay.textContent = (totalSeconds - secondsElapsed) % 60;
-}
+// WHEN I click the start button
 function startTimer() {
     document.getElementById("main-content").style.display = "block";
     document.getElementById("start").style.display = "none";
@@ -28,9 +29,11 @@ function startTimer() {
     // DisplayQuestions();
 }
 startButton.addEventListener("click", startTimer);
+// WHEN all questions are answered or the timer reaches 0
 
 
-
+// WHEN I answer a question
+// THEN I am presented with another question
 var questionList = [
     {
         "question": "How Many inches are in a foot ",
@@ -93,7 +96,8 @@ function buttonHandler(event) {
             score.textContent = "";
         }, 5000);
     }
-}
+// // THEN the game is over
+// WHEN the game is over
 
 buttonA.addEventListener("click", buttonHandler);
 buttonB.addEventListener("click", buttonHandler);
@@ -118,6 +122,7 @@ function initializeQuestion() {
     buttonD.setAttribute("data-question", questionIndex);
 }
 initializeQuestion();
+// THEN I am presented with another question
 
 
 
