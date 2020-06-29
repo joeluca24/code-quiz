@@ -40,11 +40,12 @@ body.wrong {
 }
 
 .btn-grid {
-  display: grid;
+  display: center;
   grid-template-columns: repeat(2, auto);
   gap: 10px;
   margin: 20px 0;
-    
+  align-items: center;
+ 
 }
 .btn {
  --hue: var(--hue-neutral);
@@ -68,7 +69,7 @@ body.wrong {
 --hue: var(--hue-wrong);
 }
 
-.start-btn, .next-btn {
+.start-btn {
    font-size: 1.5rem;
    font-weight: bold;
    padding: 10px 20px;
