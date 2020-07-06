@@ -11,23 +11,25 @@ var secondsElapsed = 0;
 var interval;
 // WHEN I click the start button
 function startTimer() {
-    document.getElementById("main-content").style.display = "block";
-    document.getElementById("start").style.display = "none";
-    var minutes = 10;
+    document.getElementById("answer-buttons").style.display = "block"; // turn on the display
+    document.getElementById("start").style.display = "none"; // turn off the display 
+    var minutes = 10; 
     totalSeconds = minutes * 60;
+    secondsElapsed = 0;
+    interval = setInterval(runClockCb, 1000);
 }
 // THEN a timer starts and I am presented with a question
 function runClockCb() {
     secondsElapsed++;
     minutesDisplay.textContent = Math.floor((totalSeconds - secondsElapsed) / 60);
     secondsDisplay.textContent = (totalSeconds - secondsElapsed) % 60;
-    console.log(totalSeconds)
-    secondsElapsed = 0;
-    if (typeof interval !== 'undefined') {
+    console.log({totalSeconds, secondsElapsed});
+    
+    // this means the timer will stop at zero.
+    if (totalSeconds <= secondsElapsed) {
         (clearInterval(interval));
     }
-    interval = setInterval(runClockCb, 1000);
-    DisplayQuestions();
+
 }
 startButton.addEventListener("click", startTimer);
 // WHEN all questions are answered or the timer reaches 0
