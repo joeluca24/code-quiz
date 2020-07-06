@@ -3,30 +3,31 @@ var secondsDisplay = document.querySelector("#seconds");
 var mainContent = document.querySelector("#main-content");
 var startButton = document.querySelector("#start");
 var submitButton = document.querySelector("button.submitButton");
-var userScore = document.getElementById ("user-score");
+var userScore = document.getElementById("user-score");
 var userNameInput;
 var Index = 0;
 var totalSeconds = 0;
 var secondsElapsed = 0;
 var interval;
-// THEN a timer starts and I am presented with a question
-function runClockCb() {
-    secondsElapsed++;
-    minutesDisplay.textContent = Math.floor((totalSeconds - secondsElapsed) / 60);
-    secondsDisplay.textContent = (totalSeconds - secondsElapsed) % 60;
 // WHEN I click the start button
 function startTimer() {
     document.getElementById("main-content").style.display = "block";
     document.getElementById("start").style.display = "none";
     var minutes = 10;
     totalSeconds = minutes * 60;
-    // console.log(totalSeconds)
+}
+// THEN a timer starts and I am presented with a question
+function runClockCb() {
+    secondsElapsed++;
+    minutesDisplay.textContent = Math.floor((totalSeconds - secondsElapsed) / 60);
+    secondsDisplay.textContent = (totalSeconds - secondsElapsed) % 60;
+    console.log(totalSeconds)
     secondsElapsed = 0;
     if (typeof interval !== 'undefined') {
         (clearInterval(interval));
     }
     interval = setInterval(runClockCb, 1000);
-    // DisplayQuestions();
+    DisplayQuestions();
 }
 startButton.addEventListener("click", startTimer);
 // WHEN all questions are answered or the timer reaches 0
@@ -52,7 +53,7 @@ var questionList = [
         "d": "undefined.",
         "correct": "a",
         "userAnswer": null
-        
+
     }
 ];
 
@@ -96,6 +97,7 @@ function buttonHandler(event) {
             score.textContent = "";
         }, 5000);
     }
+}
 // // THEN the game is over
 // WHEN the game is over
 
@@ -123,11 +125,3 @@ function initializeQuestion() {
 }
 initializeQuestion();
 // THEN I am presented with another question
-
-
-
-
-
-
-
-
